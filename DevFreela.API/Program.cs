@@ -1,6 +1,3 @@
-using DevFreela.API.Models;
-using DevFreela.Application.Services.Implementations;
-using DevFreela.Application.Services.Interfaces;
 using DevFreela.Infrastructure.Persistence;
 using MediatR;
 using DevFreela.Application.Commands.CreateProject;
@@ -13,7 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DevFreelaCs"); 
 builder.Services.AddDbContext<DevFreelaDbContext>(option => option.UseSqlServer(connectionString));
-builder.Services.AddScoped<IProjectService, ProjectService>();
 
 builder.Services.AddControllers();
 builder.Services.AddMediatR(typeof(CreateProjectCommand));
