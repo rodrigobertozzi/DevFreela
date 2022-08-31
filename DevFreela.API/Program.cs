@@ -14,6 +14,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using DevFreela.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +27,9 @@ builder.Services.AddDbContext<DevFreelaDbContext>(option => option.UseSqlServer(
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ISkillRepository, SkillRepository>();
-builder.Services.AddScoped<IAuthService, AuthService>();
+
+builder.Services.AddHttpClient();
+builder.Services.AddInfrastructure();
 
 builder.Services.AddControllers(options => options.Filters.Add(typeof(ValidationFilter)));
 builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
