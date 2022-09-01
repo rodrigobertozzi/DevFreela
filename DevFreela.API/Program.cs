@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using DevFreela.API.Extensions;
+using DevFreela.Application.Consumers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,8 @@ builder.Services.AddDbContext<DevFreelaDbContext>(option => option.UseSqlServer(
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ISkillRepository, SkillRepository>();
+
+builder.Services.AddHostedService<PaymentApprovedConsumer>();
 
 builder.Services.AddHttpClient();
 builder.Services.AddInfrastructure();
