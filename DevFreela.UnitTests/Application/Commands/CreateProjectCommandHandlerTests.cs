@@ -1,12 +1,8 @@
 ﻿using DevFreela.Application.Commands.CreateProject;
 using DevFreela.Core.Entities;
 using DevFreela.Core.Repositories;
+using DevFreela.Infrastructure.Persistence;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DevFreela.UnitTests.Application.Commands
 {
@@ -16,7 +12,12 @@ namespace DevFreela.UnitTests.Application.Commands
         public async Task InputDataIsOk_Executed_ReturnProjectId()
         {
             //Arrange
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
             var projectRepositoryMock = new Mock<IProjectRepository>();
+            var skillRepositoryMock = new Mock<ISkillRepository>();
+
+            unitOfWorkMock.SetupGet(uow => uow.Projects).Returns(projectRepositoryMock.Object);
+            unitOfWorkMock.SetupGet(uow => uow.Skills).Returns(skillRepositoryMock.Object);
 
             var createProjectCommand = new CreateProjectCommand
             {
@@ -27,7 +28,7 @@ namespace DevFreela.UnitTests.Application.Commands
                 IdFreelancer = 2
             };
 
-            var createProjectCommandHandler = new CreateProjectCommandHandler(projectRepositoryMock.Object);
+            var createProjectCommandHandler = new CreateProjectCommandHandler(unitOfWorkMock.Object);
 
             //Act
             var id = await createProjectCommandHandler.Handle(createProjectCommand, new CancellationToken());
