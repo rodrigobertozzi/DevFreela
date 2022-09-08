@@ -8,8 +8,6 @@ using FluentValidation.AspNetCore;
 using DevFreela.Application.Validators;
 using FluentValidation;
 using DevFreela.API.Filters;
-using DevFreela.Core.Services;
-using DevFreela.Infrastructure.Auth;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -28,6 +26,7 @@ builder.Services.AddDbContext<DevFreelaDbContext>(option => option.UseSqlServer(
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ISkillRepository, SkillRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddHostedService<PaymentApprovedConsumer>();
 

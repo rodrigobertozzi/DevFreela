@@ -1,5 +1,4 @@
 ﻿using DevFreela.Core.DTOs;
-using System.Threading.Tasks;
 
 namespace DevFreela.Core.Services
 {

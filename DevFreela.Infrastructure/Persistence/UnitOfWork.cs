@@ -1,10 +1,5 @@
 ﻿using DevFreela.Core.Repositories;
 using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DevFreela.Infrastructure.Persistence
 {
@@ -21,7 +16,6 @@ namespace DevFreela.Infrastructure.Persistence
         }
 
         public IProjectRepository Projects { get; }
-
         public IUserRepository Users { get; }
         public ISkillRepository Skills { get; set; }
         

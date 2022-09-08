@@ -4,12 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace DevFreela.Application.Consumers
 {
@@ -25,7 +21,7 @@ namespace DevFreela.Application.Consumers
 
             var factory = new ConnectionFactory
             {
-                HostName = "loclahost"
+                HostName = "localhost"
             };
 
             _connection = factory.CreateConnection();

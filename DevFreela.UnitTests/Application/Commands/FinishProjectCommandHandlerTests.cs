@@ -24,7 +24,7 @@ namespace DevFreela.UnitTests.Application.Commands
 
             var projectRepositoryMock = new Mock<IProjectRepository>();
             //var finishProjectCommand = new FinishProjectCommand();
-            var finishProjectCommandHandler = new FinishProjectCommandHandler(projectRepositoryMock.Object);
+            //var finishProjectCommandHandler = new FinishProjectCommandHandler(projectRepositoryMock.Object);
 
             //Act
             //var finishProject = await finishProjectCommandHandler.Handle(finishProjectCommand, new CancellationToken());

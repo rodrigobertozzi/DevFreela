@@ -2,7 +2,6 @@
 using DevFreela.Core.Repositories;
 using DevFreela.Core.Services;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace DevFreela.Application.Commands.FinishProject
 {
